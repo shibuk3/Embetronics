@@ -48,3 +48,45 @@ all:
 clean:
   make -C $(KDIR)  M=$(shell pwd) clean
 ```
+
+In Terminal you need to enter sudo make. Now we got hello_world_module .ko
+
+
+### Loading
+
+To load a Kernel Module, use the insmod command with root privileges.
+
+For example, our module file name is hello_world_module.ko
+```
+sudo insmod hello_world_module.ko
+```
+
+
+lsmod used to see the modules were inserted. In the below image, I’ve shown the prints in the init function. Use dmesg to see the kernel prints.
+
+
+
+So, when I load the module, it executes the init function.
+
+### Listing the Modules
+In order to see the list of currently loaded modules, use the lsmod command. In the above image, you can see that I have used lsmod command.
+
+Unloading
+To un-load, a Kernel module, use the rmmod command with root privileges.
+
+In our case,
+```
+sudo rmmod hello_world_module.ko or sudo rmmod hello_world_module
+```
+
+
+So, when I unload the module, it executes the exit function.
+
+
+### Getting Module Details
+In order to get information about a Module (author, supported options), we may use the modinfo command.
+
+For example
+```
+modinfo hello_world_module.ko
+```
