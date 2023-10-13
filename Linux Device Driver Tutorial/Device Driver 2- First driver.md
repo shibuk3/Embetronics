@@ -30,3 +30,21 @@ MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com>");
 MODULE_DESCRIPTION("A simple hello world driver");
 MODULE_VERSION("2:1.0");
 ```
+##Compiling our driver
+Once we have the C code, it is time to compile it and create the module file hello_world_module.ko. creating a Makefile for your module is straightforward.
+```
+obj-m += hello_world.o
+ 
+ifdef ARCH
+  #You can update your Beaglebone path here.
+  KDIR = /home/embetronicx/BBG/tmp/lib/modules/5.10.65/build
+else
+  KDIR = /lib/modules/$(shell uname -r)/build
+endif
+ 
+all:
+  make -C $(KDIR)  M=$(shell pwd) modules
+ 
+clean:
+  make -C $(KDIR)  M=$(shell pwd) clean
+```
