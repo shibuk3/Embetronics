@@ -30,7 +30,7 @@ MODULE_AUTHOR("EmbeTronicX <embetronicx@gmail.com>");
 MODULE_DESCRIPTION("A simple hello world driver");
 MODULE_VERSION("2:1.0");
 ```
-##Compiling our driver
+## Compiling our driver
 Once we have the C code, it is time to compile it and create the module file hello_world_module.ko. creating a Makefile for your module is straightforward.
 ```
 obj-m += hello_world.o
